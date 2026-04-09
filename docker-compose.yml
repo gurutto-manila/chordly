@@ -1,0 +1,36 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BUILD_COMMAND: "bin/rails assets:precompile"
+    container_name: chordly_web
+    ports:
+      - "3000:8080"
+    environment:
+      RAILS_ENV: production
+      RACK_ENV: production
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
+      DATABASE_URL: postgres://chordly:chordly@db:5432/chordly_production
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+    command: bin/rails server -b 0.0.0.0 -p 8080
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: chordly_db
+    restart: always
+    environment:
+      POSTGRES_USER: chordly
+      POSTGRES_PASSWORD: chordly
+      POSTGRES_DB: chordly_production
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:

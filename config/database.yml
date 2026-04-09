@@ -12,5 +12,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: /data/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: chordly_production
+  username: postgres
+  password: postgres
+  host: chordly_db
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
