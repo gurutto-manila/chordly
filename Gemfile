@@ -28,7 +28,6 @@ gem "semver"
 gem "sitemap_generator"
 gem "slim"
 gem "sprockets-rails"
-gem "sqlite3", "~> 2.1"
 gem "stimulus-rails"
 gem "term-ansicolor"
 gem "turbo-rails"
@@ -44,6 +43,7 @@ gem "wkhtmltopdf-binary"
 # gem "bcrypt", "~> 3.1.7"
 
 group :development, :test do
+  gem "sqlite3", "~> 2.1"
   gem "cypress-on-rails", "~> 1.0"
   gem "database_cleaner"
   gem "debug", platforms: %i[mri mingw x64_mingw]
