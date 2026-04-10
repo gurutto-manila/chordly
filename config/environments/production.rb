@@ -48,8 +48,8 @@ config.action_mailer.smtp_settings = {
 }
 
 config.action_mailer.default_url_options = {
-  host: ENV['APP_HOST'],
-  protocol: 'https'
+  host: ENV.fetch("APP_HOST", "chords.risensaviorministry.com"),
+  protocol: "https"
 }
 
 config.action_mailer.default_options = {
