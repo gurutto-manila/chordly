@@ -6,12 +6,12 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/stufro/chordly?color=4B88A2)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/stufro/chordly?color=ABD1B5)
 
-[Chordly](https://chordly.co.uk) is a free, open-source, online chord sheet creator.
+[Chordly](https://risensaviorministry.com) is a free, open-source, online chord sheet creator.
 
 # All features
 - :notes: Transpose all chords at once
 - :pencil2: Edit chord sheet inline
-- :microphone: Arrange chord sheets into set lists 
+- :microphone: Arrange chord sheets into set lists
 - :page_facing_up: Export chord sheets PDF
 - :book: Store chord sheets in searchable/sortable library
 

@@ -2,10 +2,10 @@ User.destroy_all
 ChordSheet.destroy_all
 SetList.destroy_all
 
-user1 = FactoryBot.create :user, email: "user@chordly.co.uk"
-user2 = FactoryBot.create :user, email: "beta@chordly.co.uk"
-user3 = FactoryBot.create :user, email: "admin@chordly.co.uk", user_type: :admin
-FactoryBot.create :user, email: "unconfirmed@chordly.co.uk"
+user1 = FactoryBot.create :user, email: "user@risensaviorministry.com"
+user2 = FactoryBot.create :user, email: "beta@risensaviorministry.com"
+user3 = FactoryBot.create :user, email: "admin@risensaviorministry.com", user_type: :admin
+FactoryBot.create :user, email: "unconfirmed@risensaviorministry.com"
 user1.confirm
 user2.confirm
 user3.confirm

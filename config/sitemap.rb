@@ -1,4 +1,4 @@
-SitemapGenerator::Sitemap.default_host = "https://chordly.co.uk"
+SitemapGenerator::Sitemap.default_host = "https://risensaviorministry.com"
 
 SitemapGenerator::Sitemap.create do
   add features_home_path, changefreq: "monthly", priority: 0.8
