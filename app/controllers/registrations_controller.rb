@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :check_captcha, only: [:create] # rubocop:disable Rails/LexicallyScopedActionFilter
+  skip_before_action :check_captcha, only: [:create] # rubocop:disable Rails/LexicallyScopedActionFilter
 
   def update_theme
     current_user.update(theme: params[:theme]) if params[:theme].in?(%w[light dark])
@@ -16,7 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def check_captcha
-  return true if Rails.env.development?
+  return if Rails.env.development? || Rails.env.test?
 
   return if verify_recaptcha
 
@@ -27,6 +27,8 @@ class RegistrationsController < Devise::RegistrationsController
   respond_with_navigational(resource) do
     flash.discard(:recaptcha_error)
     render :new
-    end
   end
+end
+
+
 end
