@@ -42,7 +42,7 @@ gem "uglifier"
 # gem "bcrypt", "~> 3.1.7"
 
 group :development, :test do
-  gem "sqlite3", "~> 2.1"
+#  gem "sqlite3", "~> 2.1"
   gem "cypress-on-rails", "~> 1.0"
   gem "database_cleaner"
   gem "debug", platforms: %i[mri mingw x64_mingw]
