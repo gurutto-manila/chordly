@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  before_action :check_captcha, only: [:create]
+  prepend_before_action :check_captcha, only: [:create]
 
   def update_theme
     current_user.update(theme: params[:theme]) if params[:theme].in?(%w[light dark])
@@ -16,22 +16,23 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def check_captcha
-    # ✅ EASY FULL BYPASS (use in server if needed)
+    # ✅ FULL BYPASS OPTION (recommended for now)
     return if ENV["SKIP_RECAPTCHA"] == "true"
 
-    # ✅ allow dev/test without captcha
+    # ✅ allow local dev/test
     return if Rails.env.development? || Rails.env.test?
 
-    # ✅ valid captcha
+    # ✅ if captcha is valid, continue signup
     return if verify_recaptcha
 
+    # ❌ CAPTCHA FAILED → re-render form safely
     self.resource = resource_class.new(sign_up_params)
     resource.validate
     set_minimum_password_length
 
     respond_with_navigational(resource) do
       flash.discard(:recaptcha_error)
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 end
