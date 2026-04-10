@@ -46,7 +46,7 @@ COPY . .
 RUN bundle exec rails assets:precompile
 
 # Expose port
-EXPOSE 8080
+EXPOSE 3000
 
 # Start Rails
 CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
