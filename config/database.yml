@@ -1,21 +1,20 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: db/<%= ENV['CYPRESS'] ? 'test' : 'development' %>.sqlite3
+  database: chordly_development
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: chordly_test
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: chordly_production
   username: postgres
   password: postgres
   host: chordly_db
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
