@@ -49,4 +49,4 @@ RUN bundle exec rails assets:precompile
 EXPOSE 3000
 
 # Start Rails
-CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
+CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
