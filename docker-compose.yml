@@ -1,23 +1,30 @@
+version: "3.9"
+
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        BUILD_COMMAND: "bin/rails assets:precompile"
+    build: .
     container_name: chordly_web
+    restart: always
     ports:
-      - "3000:8080"
+      - "3000:3000"
     environment:
       RAILS_ENV: production
       RACK_ENV: production
-      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
-      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
+
       DATABASE_URL: postgres://chordly:chordly@db:5432/chordly_production
+      REDIS_URL: redis://redis:6379/0
+RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
-    command: bin/rails server -b 0.0.0.0 -p 8080
+      RAILS_SERVE_STATIC_FILES: "true"
+      RAILS_LOG_TO_STDOUT: "true"
+
     depends_on:
       - db
+      - redis
+
+    volumes:
+      - .:/app
 
   db:
     image: postgres:15
@@ -29,8 +36,11 @@ services:
       POSTGRES_DB: chordly_production
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+
+  redis:
+    image: redis:7
+    container_name: chordly_redis
+    restart: always
 
 volumes:
   postgres_data:

@@ -12,7 +12,6 @@
     "bulma": "^1.0.4",
     "esbuild": "^0.25.0",
     "local-time": "^2.1.0",
-    "puppeteer": "^22.13.0",
     "sass": "^1.52.1",
     "sortablejs": "^1.15.0",
     "stimulus-textarea-autogrow": "^4.1.0",
