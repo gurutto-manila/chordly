@@ -41,16 +41,16 @@ class ApplicationController < ActionController::Base
     @organization_schema = SchemaDotOrg::Organization.new(
       name: "Chordly",
       founder: SchemaDotOrg::Person.new(name: "Stuart Frost"),
-      email: "support@chordly.co.uk",
-      url: "https://chordly.co.uk",
+      email: "support@risensaviorministry.com",
+      url: "https://risensaviorministry.com",
       founding_date: Date.new(2023, 10),
       founding_location: SchemaDotOrg::Place.new(address: "United Kingdom"),
-      logo: "https://chordly.co.uk/favicons/favicon-96x96.png"
+      logo: "https://risensaviorministry.com/favicons/favicon-96x96.png"
     )
 
     @website_schema = SchemaDotOrg::WebSite.new(
       name: "Chordly",
-      url: "https://chordly.co.uk"
+      url: "https://risensaviorministry.com"
     )
   end
   # rubocop:enable Metrics/MethodLength
